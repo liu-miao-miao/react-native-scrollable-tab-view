@@ -2,6 +2,7 @@ const React = require('react');
 const { ViewPropTypes } = ReactNative = require('react-native');
 const PropTypes = require('prop-types');
 const createReactClass = require('create-react-class');
+import LinearGradient from 'react-native-linear-gradient';
 const {
   View,
   Animated,
@@ -178,7 +179,7 @@ const ScrollableTabBar = createReactClass({
     const tabUnderlineStyle = {
       position: 'absolute',
       height: 4,
-      backgroundColor: 'navy',
+      backgroundColor: '#fff',
       bottom: 0,
     };
 
@@ -210,7 +211,14 @@ const ScrollableTabBar = createReactClass({
             const renderTab = this.props.renderTab || this.renderTab;
             return renderTab(name, page, isTabActive, this.props.goToPage, this.measureTab.bind(this, page));
           })}
-          <Animated.View style={[tabUnderlineStyle, dynamicTabUnderline, this.props.underlineStyle, ]} />
+            <Animated.View style={[ tabUnderlineStyle, dynamicTabUnderline, this.props.underlineStyle ]}>
+              <LinearGradient
+                colors={['#FE8901', '#FB381C']}
+                start={{x: 0, y: 0}}
+                end={{x: 1, y: 0}}
+                style={[this.props.underlineStyle, { width: this.props.underlineWidth || 18, height: 4, }]}
+              />
+            </Animated.View>
         </View>
       </ScrollView>
     </View>;
