@@ -33,6 +33,7 @@ const ScrollableTabBar = createReactClass({
     underlineStyle: ViewPropTypes.style,
     onScroll: PropTypes.func,
     underlineWidth: PropTypes.number,
+    colors: PropTypes.array,
   },
 
   getDefaultProps() {
@@ -213,7 +214,7 @@ const ScrollableTabBar = createReactClass({
           })}
             <Animated.View style={[ tabUnderlineStyle, dynamicTabUnderline, this.props.underlineStyle ]}>
               <LinearGradient
-                colors={['#FE8901', '#FB381C']}
+                colors={this.props.colors || ['#FF6B5F', '#FF3453']}
                 start={{x: 0, y: 0}}
                 end={{x: 1, y: 0}}
                 style={[this.props.underlineStyle, { width: this.props.underlineWidth || 18, height: 4, }]}
